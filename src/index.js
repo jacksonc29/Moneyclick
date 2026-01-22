@@ -124,7 +124,7 @@ function BuyClickers() {
     if (score >= clickerCost) {
         score = score - clickerCost
         clicker = clicker + 1
-        clickerCost = Math.round(clickerCost * 70)
+        clickerCost = Math.round(clickerCost * 150)
         
 
     }
