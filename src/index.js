@@ -11,12 +11,18 @@ var clicker = 0
 var clickerCost = 150
 var superclicker = 0
 var superclickerCost = 1000
-var Ultraclicker = 2000
-var UltraclickerCost = 0
+var Ultraclicker = 0
+var UltraclickerCost = 2000
 
 //load the save on the website loading
 window.onload = function() {
     Load()
+    document.getElementById("score").innerHTML = score;
+document.getElementById("cursorCost").innerHTML = cursorCost;
+document.getElementById("cursors").innerHTML = cursors;
+document.getElementById("supercursorcost").innerHTML = SuperCursorCost;
+document.getElementById("supercursor").innerHTML = SuperCursor;
+
 }
 
 //buy cursors funciton
@@ -252,14 +258,17 @@ function disableclickerbuy() {
 // building upgrades
 
 function buyclicker() {
-    if (score == clickerCost) {
-        clicker++
-        clickPower += 5
+    if (score >= clickerCost) {
+        clicker++;
+        clickPower += 5;
+        score -= clickerCost;
+        clickerCost = Math.round(clickerCost * 1.5);
 
-        score = score - clickerCost
-        disableclickerbuy()
+        document.getElementById("score").innerHTML = score;
+        document.getElementById("clickerbuy").innerHTML = `Clicker [$${clickerCost}]`;
     }
 }
+
 
 var ultraclickerbuy = document.getElementById("buyultraclickers")
 
@@ -270,7 +279,7 @@ function disableUltraclicker() {
 }
 
 function Ultraclickerbuys() {
-    if (score == UltraclickerCost) {
+    if (score >= UltraclickerCost) {
        Ultraclicker++;
        clickPower += 20
        score = score - UltraclickerCost
